@@ -7,7 +7,7 @@
 * AWS Cloud9
 * Ruby
 * Git
-* Heroku
+* Heroku aaaaa
 
 ```
 $ git clone https://github.com/sample-874/sample-app.git
