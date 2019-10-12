@@ -1,42 +1,75 @@
 <% provide(:title, "Top") %>
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= yield(:title) %> | Task App</title>
-  </head>
+<html><head><style type="text/css">.turbolinks-progress-bar {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #0076ff;
+  z-index: 9999;
+  transition: width 300ms ease-out, opacity 150ms 150ms ease-in;
+  transform: translate3d(0, 0, 0);
+}</style>
+    
+    
+
+    <link rel="stylesheet" media="all" href="/assets/application-0e5d7c8cc18bd52eeabc1c5477d3b494997c763fe01630943b441776e7ad493d.css" data-turbolinks-track="reload">
+    <script src="/assets/application-b448791b18a9452cee489df10d734ac2ccdefa3cdd5db733d63988d121bd2408.js" data-turbolinks-track="reload"></script>
+    <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+  </script>
+<![endif]-->
+  <title>Top | Task App</title><meta name="csrf-param" content="authenticity_token"><meta name="csrf-token" content="JryHCzkeWOyrbpbMZSiLS+TxTGTj4Y45frY1utGvKZxqXGh+mT/8kGQFn5mi2uoVKWHEHV0Em5RNRAXHgVkVeg=="></head>
   <body>
-    <h1>勤怠管理システムaa</h1>
-    <p>このアプリケーションでは、登録されたユーザーの勤怠情報を閲覧・登録・編集することができます。</p>
-  </body>
-</html>
+    <header class="navbar navbar-fixed-top navbar-default" id="header">
+  <div class="container">
+    <a id="logo" href="/">Task App</a>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="header-list" href="/">トップ</a></li>
+          <li><a class="header-list" href="/login">ログイン</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-<div class="jumbotron">
-  <h1>サンプルアプリ</h1>
-  <p>
-    皆さんの手で、この最低限の土台となるアプリケーションから<br>
-    タスク管理機能を持ったアプリケーションへと作り替えていきましょう！
-  </p>
+    <div class="container">
+      
+<div class="row">
+  
+  <div class="col-md-7">
+    <div class="center jumbotron" id="top-main">
+      <h1 id="top-main-title">TaskApp</h1>
+      <p>TaskAppは簡易ToDo管理ツールです。</p>
+      <p>↓↓初めてのご利用↓↓</p>
+        <a class="btn btn-lg btn-success" href="/signup">アカウント作成</a>
+        <div style="margin-top: 10px;">
+          <a class="btn btn-danger" href="/guest-admin/login">ゲストログイン（管理権限）</a>
+          <a class="btn btn-warning" href="/guest/login">ゲストログイン（一般権限）</a>
+        </div>
+    </div>
+  </div>
 
-  <p>現在このアプリケーションには、以下の機能が備わっています。</p>
-
-  <ul>
-    <li>ルートURLに対応したトップページ（このページです）</li>
-    <li>ユーザー機能
-      <ol>
-        <li>名前・メールアドレス・パスワード・ログイン認証用のカラムを持ったUserモデル</li>
-        <li>ユーザー新規登録と対応したページ</li>
-      </ol>
-    </li>
-    <li>ログイン機能
-      <ol>
-        <li>セッションによる一時的ログイン機能</li>
-        <li>Cookiesによる永続的ログイン機能</li>
-      </ol>
-    </li>
-  </ul>
-  <p>実質【勤怠チュートリアル第７章】までの機能を持ったアプリケーションとなります。</p>
-  <center>
-    <%= link_to "Sign Up", signup_path, class: "btn btn-lg btn-primary" %>
-    <%= link_to "Log In", login_path, class: "btn btn-lg btn-primary" %>
-  </center>
+  <div class="col-md-4">
+    <h1>ログイン</h1>
+    <form action="/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="syxjb8QKw+27LEWqRcU3Jms5NumolI7yf7VE/JE1NkpFecC+0yY5tPce3Q94vUxlDtqLOwE/nDf3xAemiNGOgw==">
+        <label class="label-form" for="session_email">メールアドレス</label>
+        <input class="form-control" type="email" name="session[email]">
+  
+        <label class="label-form" for="session_password">パスワード</label>
+        <input class="form-control" type="password" name="session[password]">
+        
+        <label class="checkbox inline checkbox-login" for="remember-me">
+          <input name="session[remember_me]" type="hidden" value="0"><input id="remember-me" type="checkbox" value="1" name="session[remember_me]">
+          <span>ログイン情報を記憶する</span>
+</label>        
+        <input type="submit" name="commit" value="ログイン" class="btn btn-primary btn-block btn-form" data-disable-with="ログイン">
+</form>  </div>
 </div>
+
+      
+    </div>
+  
+
+</body></html>
