@@ -13,21 +13,3 @@
  *= require_tree .
  *= require_self
  */
- 
-#header {
-    background-color: teal;
-}
-
-li .header-list {
-    color: #fff !important;
-    font-weight: bold;
-}
-
-#top-main-title {
-    font-style: italic;
-    font-weight: bold;
-}
-
-li .header-list:hover {
-    color: silver !important;
-}

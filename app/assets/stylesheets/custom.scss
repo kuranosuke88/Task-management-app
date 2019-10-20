@@ -15,6 +15,10 @@ textarea {
   resize: vertical;
 }
 
+label {
+  margin-top: 5px;
+}
+
 .center {
   text-align: center;
 }
@@ -52,6 +56,14 @@ p {
 
 /* ヘッダー */
 
+#top-main {
+  background-color: #fff;
+}
+
+#header {
+  background-color: teal;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -66,6 +78,14 @@ p {
 #logo:hover {
   color: #808080;
   text-decoration: none;
+}
+
+li .header-list {
+   color: #fff !important;
+  font-weight: bold;
+  &:hover {
+    color: silver !important;
+  }
 }
 
 /* デバッグウインドウ */
