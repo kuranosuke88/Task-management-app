@@ -56,10 +56,6 @@ p {
 
 /* ヘッダー */
 
-#top-main {
-  background-color: #fff;
-}
-
 #header {
   background-color: teal;
 }
@@ -86,6 +82,15 @@ li .header-list {
   &:hover {
     color: silver !important;
   }
+}
+
+#dropdown-title {
+  background-color: teal;
+}
+
+li.dropdown-header {
+  background-color: rgba(200, 200, 200, 0.5);
+  font-weight: bold;
 }
 
 /* デバッグウインドウ */
