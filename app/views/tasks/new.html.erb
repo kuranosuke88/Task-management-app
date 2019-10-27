@@ -4,13 +4,13 @@
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+    <%= form_with(model: @task, local: true) do |f| %>
 
-      <%= f.label :"名称", class: "label-login" %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.label :name, class: "label-login" %>
+      <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :"詳細", class: "label-login" %>
-      <%= f.text_area :password, rows: 5, class: 'form-control' %>
+      <%= f.label :description, class: "label-login" %>
+      <%= f.text_area :description, rows: 5, class: 'form-control' %>
 
       <%= f.submit "新規登録", class: "btn btn-lg btn-primary btn-login" %>
     <% end %>
