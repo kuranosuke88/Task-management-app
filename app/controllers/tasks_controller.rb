@@ -6,6 +6,14 @@ class TasksController < ApplicationController
   
   def index
     @tasks = Task.all
+    @user = User.find_by(params[:id])
+  end
+  
+  def edit
+  end
+  
+  def show
+    @user = User.find_by(params[:id])
   end
   
   def create
@@ -17,6 +25,13 @@ class TasksController < ApplicationController
     else
       render :new
     end
+  end
+  
+  def destroy
+    @task = Task.find_by(params[:id])
+    @task.destroy
+    flash[:success] = "タスクを削除しました。" 
+    redirect_to user_tasks_url
   end
   
   private
