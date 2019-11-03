@@ -1,3 +1,41 @@
 <P><% provide(:title, @user.name) %></P>
 
 <h1>タスク詳細</h1>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <table class="table table-bordered" id="table-task">
+      <tbody>
+        <tr>
+          <th class="active col-md-2">ID</th>
+          <td class="col-md-10">277</td>
+        </tr>
+        <tr>
+          <th class="active">名称</th>
+          <td>ta@</td>
+        </tr>
+        <tr>
+          <th class="active">詳細</th>
+          <td>
+            aaaaa
+          </td>
+        </tr>
+        <tr>
+          <th class="active">作成日</th>
+          <td>2019/10/22 17:54</td>
+        </tr>
+        <tr>
+          <th class="active">更新日</th>
+          <td>2019/10/22 17:54</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div>
+      <a class="btn btn-lg btn-success" href="/users/1/tasks/277/edit">編集</a>
+      <a data-confirm="「ta@」を削除します。よろしいですか？" class="btn btn-lg btn-danger" rel="nofollow" data-method="delete" href="/users/1/tasks/277">削除</a>
+    </div>
+  </div>    
+</div>
+      
+    </div>
