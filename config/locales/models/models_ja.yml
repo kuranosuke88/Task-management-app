@@ -5,7 +5,7 @@ ja:
     attributes:
         task:
           id: ID
-          name: 名前
+          name: 名称
           detail: 詳細
           email: メールアドレス
           password: パスワード

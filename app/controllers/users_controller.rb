@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   def show
-    @user = User.find(params[:id])
+    set_user
   end
 
   def new
@@ -9,6 +9,20 @@ class UsersController < ApplicationController
   end
   
   def index
+  end
+  
+  def edit
+   set_user
+  end
+  
+  def update
+    set_user
+    if @user.update_attributes(user_params)
+      flash[:success] = "ユーザー情報を更新しました。"
+      redirect_to user_url
+    else
+      render :edit
+    end
   end
   
   def create
