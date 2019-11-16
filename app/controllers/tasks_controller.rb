@@ -1,15 +1,15 @@
 class TasksController < ApplicationController
-  
-  before_action :logged_in_user, only: [:new, :show, :edit, :update, :index]
-  before_action :admin_or_correct_user, only: :update
+  before_action :set_user
+  before_action :set_task, only: %i(show edit update destroy)
+  before_action :logged_in_user
+  before_action :correct_user
   
   def new
     @task = Task.new
   end
   
   def index
-    @tasks = Task.all
-    @user = User.find_by(params[:id])
+     @tasks = @user.tasks
   end
   
   def edit
@@ -25,7 +25,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
       flash[:success] = "タスクを更新しました。"
-      redirect_to user_tasks_url
+      redirect_to user_task_url
     else
       render :edit
     end
@@ -43,7 +43,6 @@ class TasksController < ApplicationController
   end
   
   def destroy
-    @task = Task.find_by(params[:id]).destroy
     @task.destroy
     flash[:success] = "タスクを削除しました。" 
     redirect_to user_tasks_url
@@ -55,19 +54,15 @@ class TasksController < ApplicationController
      params.require(:task).permit(:name, :detail)
    end
    
-    def logged_in_user
-      unless logged_in?
-      flash[:danger] = "ログインしてください。"
-      redirect_to login_url
-      end
-    end
-    
-    def admin_or_correct_user
-      @user = User.find(params[:user_id]) if @user.blank?
-      unless current_user?(@user) || current_user.admin?
-       flash[:danger] = "編集権限がありません。"
-       redirect_to(root_url)
-      end
-    end
-
+   def set_user
+     @user = User.find(params[:user_id])
+   end
+   
+   def set_task
+     unless @task = @user.tasks.find_by(id: params[:id])
+       flash[:danger] = "権限がありません。"
+       redirect_to user_tasks_url
+     end
+   end
+   
 end
