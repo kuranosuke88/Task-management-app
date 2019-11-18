@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update, :index, :destroy]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
+  before_action :admin_or_correct, only: %i(show)
   
   def show
     set_user
@@ -23,9 +24,10 @@ class UsersController < ApplicationController
   
   def update
     set_user
-    if @user.update_attributes(user_params)
-      flash[:success] = "ユーザー情報を更新しました。"
-      redirect_to user_url
+    if params[:user][:password].blank?
+       params[:user].delete("password")
+       flash[:success] = "ユーザー情報を更新しました。"
+       redirect_to user_url
     else
       render :edit
     end
@@ -43,9 +45,8 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    user = User.find_by(params[:id]).destroy
-    user.destroy
-    flash[:success] = "#{user.name}のデータを削除しました。" 
+    @user.destroy
+    flash[:success] = "#{@user.name}のデータを削除しました。" 
     redirect_to users_url
   end
   

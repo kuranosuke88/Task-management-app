@@ -1,9 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_user
-  before_action :set_task, only: %i(show edit update destroy)
+  before_action :set_task, only: %i(edit show update destroy)
   before_action :logged_in_user
-  before_action :correct_user
-  
+  before_action :correct_user, only: %i(new)
+  before_action :admin_or_correct, only: %i(edit show)
+  before_action :correct_test, only: %i(index edit show)
+
   def new
     @task = Task.new
   end
@@ -22,10 +24,9 @@ class TasksController < ApplicationController
   end
   
   def update
-    @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
       flash[:success] = "タスクを更新しました。"
-      redirect_to user_task_url
+      redirect_to user_task_url(@user,@task)
     else
       render :edit
     end
@@ -65,4 +66,7 @@ class TasksController < ApplicationController
      end
    end
    
+   def correct_test
+     redirect_to user_tasks_url unless current_user?(@user)
+   end
 end

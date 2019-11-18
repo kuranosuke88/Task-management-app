@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   def admin_or_correct
     unless current_user?(@user) || current_user.admin?
       flash[:danger] = "権限がありません。"
-      redirect_to root_url
+      redirect_to user_tasks_path
     end  
   end
 end
